@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+              integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
+              crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('css/custom-style.css') }}" />
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <div class="container">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="navbar-brand" href="{{ path('user_index') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('user_index') }}">Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('user_group_index') }}">Groups</a>
+                    </li>
+                </ul>
+                <ul style="float: right" class="navbar-nav">
+                    <li class="nav-item">
+                        <span class="badge badge-primary">Hi {{ app.user.username }}</span>
+                    </li>
+                    <li class="nav-item">
+                        <span style="color: #DDDDDD;">|</span>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ path('logout') }}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main role="main" class="container main">
+        {% block body %}{% endblock %}
+    </main>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

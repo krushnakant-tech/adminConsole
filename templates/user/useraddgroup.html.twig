@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add User to Group{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .error {color: #AA3333}
+</style>
+<div class="example-wrapper">
+    <h1>Add User to Group</h1>
+
+    {% if userGroups[0] is empty %}
+        <p class="error">There are no additional groups to add. </p>
+    {% else %}
+    <form action="{{ path('user_groupadd',{'id':user.id}) }}" method="post">
+        <select class="form-control" id="grouplist" name="_group">
+            {% for userGroup in userGroups[0] %}
+            <option value='{{userGroup.id}}'>{{userGroup.name}}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="btn" >Submit</button>
+    </form>
+    {% endif %}
+
+    <a href="{{ path('user_index') }}">back to list</a>
+</div>
+{% endblock %}

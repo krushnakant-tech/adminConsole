@@ -1,0 +1,33 @@
+{% block title %}Please login to Continue!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .error {color: #AA3333}
+</style>
+
+<div class="example-wrapper">
+    <h1>Login ✅</h1>
+    {% if error %}
+        <span class="error">{{ error.messageKey }}</span>
+    {% endif %}
+    <form action="{{ path('login') }}" method="post">
+        <table border="0">
+            <tr>
+                <td>Username: </td>
+                <td> <input type="text" name="_username" > </td>
+            </tr>
+            <tr>
+                <td>Password: </td>
+                <td> <input type="password" name="_password"> </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td> <button type="submit" >Login</button> </td>
+            </tr>
+        </table>
+        <input type="hidden" name="_target_path" value="/user" />
+    </form>
+</div>
+{% endblock %}

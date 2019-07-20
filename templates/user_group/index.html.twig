@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Groups{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .error {color: #AA3333}
+</style>
+<div class="example-wrapper">
+    <h1>Groups</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user_group in user_groups %}
+            <tr>
+                <td>{{ user_group.id }}</td>
+                <td>{{ user_group.name }}</td>
+                <td>
+                    <a href="{{ path('user_group_show', {'id': user_group.id}) }}">show</a>
+                    <a href="{{ path('user_group_edit', {'id': user_group.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('user_group_new') }}">Create new</a>
+</div>
+{% endblock %}
